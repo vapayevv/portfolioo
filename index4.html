@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<title>Reyting</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+body{
+  margin:0;
+  font-family:Inter;
+  background:#fff7ed;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  min-height:100vh;
+}
+.card{
+  background:white;
+  padding:24px;
+  width:100%;
+  max-width:460px;
+  border-radius:16px;
+  box-shadow:0 12px 30px rgba(0,0,0,.12);
+}
+table{width:100%}
+td,th{padding:10px}
+input{width:70px;padding:6px}
+button{
+  width:100%;
+  margin-top:16px;
+  padding:12px;
+  background:#f97316;
+  border:none;
+  color:white;
+  border-radius:10px;
+}
+</style>
+</head>
+<body>
+
+<div class="card">
+<h2>O‘quvchilar reytingi</h2>
+<table id="tb">
+<tr><th>Ism</th><th>Ball</th></tr>
+<tr><td>Ali</td><td><input value="80"></td></tr>
+<tr><td>Vali</td><td><input value="95"></td></tr>
+<tr><td>Guli</td><td><input value="70"></td></tr>
+</table>
+<button onclick="sort()">Reytinglash</button>
+</div>
+
+<script>
+function sort(){
+  const tb=document.getElementById("tb");
+  [...tb.rows].slice(1)
+  .sort((a,b)=>b.cells[1].children[0].value-a.cells[1].children[0].value)
+  .forEach(r=>tb.appendChild(r));
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- SEO -->
+  <meta name="description" content="Dilshod Vafoev – Full Stack Frontend Developer portfolio. Zamonaviy va tezkor web saytlar." />
+  <meta name="keywords" content="Dilshod Vafoev, frontend, full stack, web developer, portfolio" />
+  <meta name="author" content="Dilshod Vafoev" />
+
+  <title>Dilshod Vafoev | Portfolio</title>
+
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <style>
+/* ===== FUTURISTIC HERO STYLE (SCREENSHOT-LIKE) ===== */
+:root{
+  --bg:#050b16;
+  --bg2:#02060d;
+  --accent:#1ef0ff;
+  --accent-dark:#0bbcd6;
+  --text:#ffffff;
+  --muted:#8fa3c9;
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  font-family:'Poppins',Inter,system-ui,sans-serif;
+  color:var(--text);
+  background:radial-gradient(circle at top,var(--bg),var(--bg2));
+  overflow-x:hidden;
+}
+
+a{text-decoration:none;color:inherit}
+
+/* PARTICLES (DOTS) */
+body::before{
+  content:"";
+  position:fixed;inset:0;
+  background:
+    radial-gradient(6px 6px at 15% 30%,rgba(30,240,255,.25),transparent 60%),
+    radial-gradient(4px 4px at 60% 20%,rgba(30,240,255,.18),transparent 60%),
+    radial-gradient(5px 5px at 80% 70%,rgba(30,240,255,.22),transparent 60%),
+    radial-gradient(3px 3px at 30% 80%,rgba(30,240,255,.2),transparent 60%);
+  background-size:260px 260px;
+  animation:float 140s linear infinite;
+  z-index:-1;
+}
+@keyframes float{to{transform:translateY(-2000px)}}
+
+/* HEADER */
+header{
+  position:fixed;top:0;width:100%;z-index:20;
+  background:linear-gradient(to bottom,rgba(5,11,22,.95),rgba(5,11,22,.6),transparent);
+}
+.nav{
+  max-width:1200px;margin:auto;
+  padding:18px 22px;
+  display:flex;justify-content:space-between;align-items:center;
+}
+.nav ul{list-style:none;display:flex;gap:18px;margin:0;padding:0}
+.nav a{
+  color:var(--muted);
+  padding:8px 14px;
+  border-radius:14px;
+  transition:.3s;
+}
+.nav a:hover{color:var(--text);background:rgba(30,240,255,.12)}
+
+.controls{display:flex;gap:10px}
+.btn{
+  padding:12px 18px;
+  border-radius:28px;
+  border:2px solid var(--accent);
+  background:transparent;
+  color:var(--accent);
+  font-weight:600;
+  transition:.35s;
+}
+.btn:hover{background:var(--accent);color:#041318;box-shadow:0 0 30px rgba(30,240,255,.5);cursor:pointer}
+.btn.accent{background:var(--accent);color:#041318}
+
+/* SECTIONS */
+section{max-width:1200px;margin:auto;padding:120px 20px}
+
+/* HERO */
+.hero{
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:flex-start;
+  padding-top:120px;
+}
+.hero h1{
+  font-size:clamp(36px,7vw,64px);
+  line-height:1.15;
+  margin:0 0 14px;
+}
+.hero h1 span{color:var(--accent)}
+.hero p{
+  font-size:clamp(16px,3.5vw,20px);
+  color:var(--muted);
+  max-width:520px;
+}
+
+/* BUTTONS IN HERO */
+.hero .actions{
+  margin-top:34px;
+  display:flex;
+  gap:18px;
+}
+
+/* ABOUT CARDS */
+.about-cards{
+  margin-top:40px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:26px;
+}
+.about-card{
+  background:rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.14);
+  border-radius:24px;
+  padding:28px;
+  backdrop-filter:blur(6px);
+  transition:transform .35s,border-color .35s,box-shadow .35s;
+}
+.about-card h3{margin-bottom:10px}
+.about-card p{color:var(--muted)}
+.about-card:hover{
+  transform:scale(1.06);
+  border-color:var(--accent);
+  box-shadow:0 0 0 1px rgba(122,162,255,.6),0 0 40px rgba(122,162,255,.25);
+}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  .hero{align-items:flex-start;padding-top:140px}
+  .hero h1{font-size:42px}
+  .hero p{font-size:16px}
+  .hero .actions{flex-direction:column;width:100%}
+  .btn{width:100%;text-align:center}
+}
+@media(max-width:480px){
+  section{padding:90px 16px}
+  .hero h1{font-size:34px}
+}
+</style>
+</head>
+<body>
+
+<div id="loader"><div></div></div>
+
+<header ondblclick="openAdmin()">
+  <div class="nav">
+    <ul>
+      <li><a href="#main" data-key="home"></a></li>
+      <li><a href="#about" data-key="about"></a></li>
+      
+      <li><a href="#projects" data-key="projects"></a></li>
+      <li><a href="#contact" data-key="contact"></a></li>
+    </ul>
+    <div class="controls">
+      <button class="btn" onclick="setLang('uz')">UZ</button>
+      <button class="btn" onclick="setLang('ru')">RU</button>
+      <button class="btn" onclick="setLang('en')">EN</button>
+      <button class="btn accent" onclick="toggleTheme()"><i class="fa-solid fa-moon"></i></button>
+    </div>
+  </div>
+</header>
+
+<section id="main" class="hero reveal">
+  <h1 data-key="hero_title"></h1>
+  
+</section>
+
+<section id="about" class="reveal">
+  <h2 data-key="about"></h2>
+  <p class="muted" data-key="about_text"></p>
+
+  <div class="about-cards">
+    <div class="about-card">
+      <h3>🌐 Web dasturlash</h3>
+      <p>HTML, CSS, JavaScript, React</p>
+    </div>
+    <div class="about-card">
+      <h3>🎨 Dizayn</h3>
+      <p>UI/UX, Figma, Adobe XD</p>
+    </div>
+    <div class="about-card">
+      <h3>📱 Mobil ilovalar</h3>
+      <p>React Native, Flutter</p>
+    </div>
+    <div class="about-card">
+      <h3>🗄️ Maʼlumotlar bazasi</h3>
+      <p>MySQL, MongoDB, Firebase</p>
+    </div>
+  </div>
+</section>
+
+
+
+<section id="projects" class="reveal">
+  <h2 data-key="projects"></h2>
+
+  <div class="about-cards">
+    <a href="index1.html" class="about-card">
+      <h3>📘 Dars Jadvali</h3>
+      <p>index1.html</p></p>
+    </a>
+    <a href="index2.html" class="about-card">
+      <h3>🍽️ Maktab oshxonasi</h3>
+      <p>index2.html</p></p>
+    </a>
+    <a href="index3.html" class="about-card">
+      <h3>📚 Online kutubxona</h3>
+      <p>index3.html</p></p>
+    </a>
+    <a href="index4.html" class="about-card">
+      <h3>⭐ Reyting Baholash</h3>
+      <p>index4.html</p></p>
+    </a>
+  </div>
+</section>
+
+<section id="contact" class="reveal">
+  <h2 data-key="contact"></h2>
+  <p class="muted" data-key="contact_text"></p>
+</section>
+
+<footer>
+<!-- CV FILE NOTE: Dilshod_Vafoev_CV.pdf faylni shu papkaga joylang -->
+  <div class="foot">
+    <p>© 2026 Dilshod Vafoev</p>
+    <div class="socials">
+      <a href="https://instagram.com/USERNAME" target="_blank"><i class="fab fa-instagram"></i></a>
+      <a href="https://t.me/USERNAME" target="_blank"><i class="fab fa-telegram"></i></a>
+      <a href="tel:+998901234567"><i class="fas fa-phone"></i></a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const translations={
+    uz:{home:"Asosiy",about:"Men haqimda",services:"Xizmatlar",projects:"Mening loyihalarim",contact:"Bog'lanish",hero_title:"Salom, men Dilshod Vafoev",hero_desc:"2009-yilda tug'ilgan Full Stack Frontend Developer",about_text:"Men zamonaviy va tezkor web saytlar yarataman.",service1:"Frontend (HTML, CSS, JS)",service2:"Backend (Node.js, MongoDB)",service3:"To'liq web loyihalar",contact_text:"Quyidagi ijtimoiy tarmoqlar orqali bog'laning"},
+    ru:{home:"Главная",about:"Обо мне",services:"Услуги",projects:"Мои проекты",contact:"Контакты",hero_title:"Привет, я Дилшод Вафаев",hero_desc:"Frontend Full Stack разработчик",about_text:"Создаю современные сайты.",service1:"Фронтенд",service2:"Бэкенд",service3:"Веб-проекты",contact_text:"Свяжитесь со мной ниже"},
+    en:{home:"Home",about:"About",services:"Services",projects:"Projects",contact:"Contact",hero_title:"Hi, I'm Dilshod Vafoev",hero_desc:"Full Stack Frontend Developer",about_text:"I build modern websites.",service1:"Frontend",service2:"Backend",service3:"Full projects",contact_text:"Contact me via links below"}
+  };
+  function setLang(l){document.querySelectorAll('[data-key]').forEach(e=>e.textContent=translations[l][e.dataset.key])}
+  function toggleTheme(){document.body.classList.toggle('light')}
+
+  /* PRELOADER */
+  window.onload=()=>document.getElementById('loader').style.display='none'
+
+  /* SCROLL */
+  const reveals=document.querySelectorAll('.reveal')
+  const io=new IntersectionObserver(entries=>entries.forEach(e=>e.isIntersecting&&e.target.classList.add('show')),{threshold:.15})
+  reveals.forEach(r=>io.observe(r))
+
+  setLang('uz')
+</script>
+
+
+
+<!-- ADMIN PANEL -->
+<div id="admin" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);backdrop-filter:blur(6px);z-index:50">
+  <div style="max-width:420px;margin:10% auto;background:var(--card);padding:24px;border-radius:20px;border:1px solid var(--border)">
+    <h3>Admin Panel</h3>
+    <input id="title" placeholder="Project nomi" style="width:100%;margin:8px 0;padding:10px;border-radius:10px;border:1px solid var(--border)">
+    <input id="desc" placeholder="Qisqa tavsif" style="width:100%;margin:8px 0;padding:10px;border-radius:10px;border:1px solid var(--border)">
+    <input id="img" placeholder="Rasm URL" style="width:100%;margin:8px 0;padding:10px;border-radius:10px;border:1px solid var(--border)">
+    <input id="link" placeholder="Loyiha linki" style="width:100%;margin:8px 0;padding:10px;border-radius:10px;border:1px solid var(--border)">
+    <button class="btn accent" onclick="addProject()">Qo‘shish</button>
+    <button class="btn" onclick="closeAdmin()">Yopish</button>
+  </div>
+</div>
+
+<script>
+/* ADMIN PANEL LOGIC */
+const PASSWORD = "admin123"; // O'zgartirishingiz mumkin
+
+function openAdmin(){
+  const pass = prompt("Admin parol:");
+  if(pass === PASSWORD){ document.getElementById('admin').style.display='block'; }
+  else alert('Noto‘g‘ri parol');
+}
+function closeAdmin(){ document.getElementById('admin').style.display='none'; }
+
+const projectWrap = document.querySelector('.projects');
+let projects = JSON.parse(localStorage.getItem('projects')) || [];
+
+function renderProjects(){
+  projectWrap.innerHTML='';
+  projects.forEach((p,i)=>{
+    projectWrap.innerHTML += `
+    <div class="card">
+      <img src="${p.img}">
+      <div class="content">
+        <h3>${p.title}</h3>
+        <p>${p.desc}</p>
+        <a href="${p.link}" target="_blank">Ko'rish</a><br>
+        <small style="color:var(--muted);cursor:pointer" onclick="editProject(${i})">✏️ Edit</small> |
+        <small style="color:red;cursor:pointer" onclick="deleteProject(${i})">🗑 Delete</small>
+      </div>
+    </div>`;
+  });
+}
+
+function addProject(){
+  const p={title:title.value,desc:desc.value,img:img.value,link:link.value};
+  projects.push(p);
+  localStorage.setItem('projects',JSON.stringify(projects));
+  renderProjects();
+  closeAdmin();
+}
+
+function deleteProject(i){
+  if(confirm('O‘chirilsinmi?')){
+    projects.splice(i,1);
+    localStorage.setItem('projects',JSON.stringify(projects));
+    renderProjects();
+  }
+}
+
+function editProject(i){
+  const p=projects[i];
+  title.value=p.title; desc.value=p.desc; img.value=p.img; link.value=p.link;
+  projects.splice(i,1);
+  openAdmin();
+}
+
+renderProjects();
+</script>
+
+</body>
+</html>
