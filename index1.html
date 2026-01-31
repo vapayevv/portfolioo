@@ -5,69 +5,52 @@
 <title>Dars Jadvali</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
-:root{
-  --primary:#2563eb;
-  --bg:#f1f5f9;
-}
-*{box-sizing:border-box}
 body{
-  margin:0;
-  font-family:Inter,Arial;
-  background:var(--bg);
-  display:flex;
-  justify-content:center;
-  align-items:center;
+  margin:0;font-family:Inter;
+  background:#f1f5f9;
+  display:flex;justify-content:center;align-items:center;
   min-height:100vh;
 }
+.nav{position:fixed;top:20px;left:20px}
+.nav a{
+  background:#2563eb;color:#fff;
+  padding:10px 16px;border-radius:10px;
+  text-decoration:none;
+}
 .card{
-  background:white;
-  width:100%;
-  max-width:420px;
-  padding:24px;
+  background:white;padding:24px;
+  width:100%;max-width:420px;
   border-radius:16px;
   box-shadow:0 10px 30px rgba(0,0,0,.1);
 }
-h2{margin-bottom:16px}
-select{
-  width:100%;
-  padding:12px;
-  border-radius:10px;
-  border:1px solid #ddd;
-}
-ul{padding:0;margin-top:16px}
-li{
-  list-style:none;
-  padding:10px;
-  border-radius:8px;
-  margin-bottom:8px;
-  background:#f8fafc;
-}
+select{width:100%;padding:12px;margin-top:10px}
+li{list-style:none;padding:8px;background:#f8fafc;margin-top:6px}
 </style>
 </head>
 <body>
 
+<nav class="nav"><a href="index.html">🏠 Asosiy</a></nav>
+
 <div class="card">
-  <h2>Dars jadvali</h2>
-  <select id="day"></select>
-  <ul id="list"></ul>
+<h2>Dars jadvali</h2>
+<select id="day"></select>
+<ul id="list"></ul>
 </div>
 
 <script>
 const data={
-  Dushanba:["Matematika","Ingliz tili","Fizika"],
-  Seshanba:["Tarix","Ona tili"],
-  Chorshanba:["Informatika","Matematika"],
-  Payshanba:["Geografiya"],
-  Juma:["Jismoniy tarbiya"]
+ Dushanba:["Matematika","Ingliz tili"],
+ Seshanba:["Tarix","Ona tili"],
+ Chorshanba:["Informatika"],
+ Payshanba:["Geografiya"],
+ Juma:["Jismoniy tarbiya"]
 };
-const day=document.getElementById("day");
-const list=document.getElementById("list");
-Object.keys(data).forEach(d=>day.innerHTML+=`<option>${d}</option>`);
-function render(){
-  list.innerHTML="";
-  data[day.value].forEach(l=>list.innerHTML+=`<li>${l}</li>`);
-}
-day.onchange=render; render();
+const d=document.getElementById("day");
+const l=document.getElementById("list");
+Object.keys(data).forEach(x=>d.innerHTML+=`<option>${x}</option>`);
+function r(){l.innerHTML="";data[d.value].forEach(i=>l.innerHTML+=`<li>${i}</li>`);}
+d.onchange=r;r();
 </script>
+
 </body>
 </html>
